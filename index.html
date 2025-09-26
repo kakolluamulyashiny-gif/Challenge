@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Education Dashboard</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      height: 100vh;
+      background: #f5f7fa;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 220px;
+      background: #2c3e50;
+      color: white;
+      padding: 20px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .sidebar h2 {
+      margin-bottom: 30px;
+    }
+
+    .sidebar button {
+      width: 80%;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      background: #34495e;
+      color: white;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+
+    .sidebar button:hover {
+      background: #1abc9c;
+    }
+
+    /* Main Content */
+    .content {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      margin: 15px 0;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .card h3 {
+      margin-top: 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2>EduDash</h2>
+    <button onclick="showSection('subjects')">Subjects</button>
+    <button onclick="showSection('notes')">Notes</button>
+    <button onclick="showSection('quiz')">Quizzes</button>
+    <button onclick="showSection('progress')">Progress</button>
+  </div>
+
+  <!-- Main Content -->
+  <div class="content" id="mainContent">
+    <h2>Welcome to EduDash 🎓</h2>
+    <p>Select a section from the left menu to start learning!</p>
+  </div>
+
+  <script>
+    function showSection(section) {
+      const content = document.getElementById('mainContent');
+      let html = '';
+
+      if(section === 'subjects') {
+        html = `
+          <h2>📘 Subjects</h2>
+          <div class="card"><h3>Math</h3><p>Algebra, Geometry, Calculus basics</p></div>
+          <div class="card"><h3>Science</h3><p>Physics, Chemistry, Biology fundamentals</p></div>
+          <div class="card"><h3>History</h3><p>World history and important events</p></div>
+        `;
+      }
+      else if(section === 'notes') {
+        html = `
+          <h2>📝 Notes</h2>
+          <div class="card"><h3>Math Notes</h3><p>Formula sheet and practice problems.</p></div>
+          <div class="card"><h3>Science Notes</h3><p>Diagrams and key definitions.</p></div>
+        `;
+      }
+      else if(section === 'quiz') {
+        html = `
+          <h2>❓ Quizzes</h2>
+          <div class="card">
+            <h3>Quick Math Quiz</h3>
+            <p>What is 12 × 8?</p>
+            <button onclick="alert('Correct!')">96</button>
+            <button onclick="alert('Try again!')">98</button>
+          </div>
+        `;
+      }
+      else if(section === 'progress') {
+        html = `
+          <h2>📊 Progress</h2>
+          <div class="card"><h3>Math: 70% complete</h3></div>
+          <div class="card"><h3>Science: 40% complete</h3></div>
+          <div class="card"><h3>History: 50% complete</h3></div>
+        `;
+      }
+
+      content.innerHTML = html;
+    }
+  </script>
+</body>
+</html>
